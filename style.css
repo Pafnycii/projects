@@ -1,0 +1,464 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+/* так мы подключили шрифт, но чтоб использовать его в документе надо в бади прописать 
+этот шрифт, это копируется с сайта с шрифтами, и через запятую, потому что если 1 шрифт почему то заглючит, будет использован 2, тот что через запятую, стандартный так сказать шрифт */
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+.container {
+  /* мы здесь делаем 970 пикселей а не 940, потому что паддинг слева и справа занимает в сумме 30 пикселей */
+  max-width: 970px;
+  /* 2 значения, 1 отвечает за отступ по вертикали, 2 по горизонтали */
+  padding: 0 15px;
+  /* чтобы в контейнере был текст по центру, пишем чтоб по вертикали отступ был 0, а по бокам авто, чтоб комп сам рассчитал значение при котором текст будет по центру */
+  margin: 0 auto;
+}
+.p {
+  color: #6a859c;
+  /* почему не 25 пикселей как в макете, а 1.8, поскольку размер шрифта не всегда 14, а где то 14, где то 13, где то 25, то чтобы размер строки был красивым нужно сделать множитель. Для этого 25 пикселей размер строки который в макете, делим на 14, размер шрифта, получаем 1.8 */
+  line-height: 1.8;
+}
+
+.hide {
+  display: none !important;
+}
+
+.title-wrapper {
+  margin-bottom: 60px;
+}
+
+.title {
+  margin-bottom: 17px;
+  font-size: 30px;
+  line-height: 1.2;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #676770;
+}
+.subtitle {
+  font-size: 17px;
+  line-height: 1.2;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #8e8e9c;
+}
+
+.common-section {
+  text-align: center;
+  padding: 80px 0;
+}
+
+.common-section--dark {
+  background-color: #192024;
+}
+
+/* таким знаком умножения мы может дать что то всем элементам в этом классе, в данном случаем чтоб на темном фоне был белый цвет текста */
+.common-section--dark * {
+  color: #fff;
+}
+
+.common-section--dark .subtitle {
+  color: #e8e8e8;
+}
+
+/* position fixed - для того чтоб прокручивая сайт вниз шапка ехала за нами чтоб удобней было нажать в случае чего, а не оставалось вверху */
+.header {
+  padding: 20px 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* z-index для того чтобы шапка всегда была выше любого из слоев, то есть нужно 100 слоев чего либо чтобы перекрыть шапку */
+  z-index: 100;
+  background-color: #fff;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header__container {
+  display: flex;
+  /* justify space between мы этой командой заставляем встать в разные части контейнера контент на одинаковом расстоянии */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 25px;
+  /* леттер спэйсинг - расстрояние в слове между буквами */
+  letter-spacing: 4px;
+  /* текст транстформ апперкейс - это чтоб заглавные буквы были */
+  text-transform: uppercase;
+  color: #69b9ff;
+}
+
+.header__nav ul {
+  display: flex;
+}
+
+/* так мы выбрали тот элемент списка, чтоб работало только на тот элемент, где слева есть соседняя надпись */
+.header__nav li + li {
+  margin-left: 40px;
+}
+
+.header__nav a {
+  font-size: 16px;
+  color: #676770;
+  /* транзишн - для более плавного изменения цвета */
+  transition: color 0.2s;
+}
+/* делаем снова тот же элемент чтоб изменялось при наведении мышкой для этого :a hover */
+.header__nav a:hover {
+  color: #0082f3;
+}
+/* active делаем - чтоб при активации ссылки была другая анимация */
+.header__nav a:active {
+  color: #0062b6;
+}
+
+.welcome {
+  min-height: 600px;
+  /* 100 vh - это занимает 100 % от ширины экрана, браузера */
+  height: 100vh;
+  padding: 195 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  background-color: #282936;
+  background-image: url("/image/welcome\ bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.welcome__heading {
+  margin-bottom: 100px;
+  font-size: 59px;
+  line-height: 1;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+/* такой формулой сколько бы не было кнопок, пусть 6, у каждой будет отступ слева */
+.welcome__links > * + * {
+  margin-left: 20px;
+}
+.link-primary {
+  display: inline-block;
+  padding: 11px 30px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background-color: #69b9ff;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.link-primary:hover {
+  background-color: #7cc2ff;
+}
+
+.link-primary:active {
+  background-color: #0f8fff;
+}
+
+.link {
+  padding: 10px 30px;
+  display: inline-block;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid #ffffff;
+  /* бордер радиус - закругление рамки */
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.link:hover {
+  background-color: rgb(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.link:active {
+  background-color: rgb(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.5);
+}
+
+/* -------------------! What we do 2 таблица */
+
+.about .card-wrapper {
+  display: flex;
+  /* здесь мы делаем флекс-врап и гэп (отступ) для того чтобы и на мобильном устройстве было все ок выглядело, чтоб когда не хватает место под карточку, они переносились в колонку, а не были бы в строчку */
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.about .card {
+  padding: 35px 15px 20px 15px;
+  max-width: 300px;
+  border: 1px solid #dcebf7;
+  border-radius: 5px;
+}
+.about .card img {
+  margin-bottom: 20px;
+  width: 94px;
+  height: 94px;
+  /* это нужно чтоб картинка полностью помещалась в этот блок 94 пикселя */
+  object-fit: contain;
+}
+.about .card h4 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  color: #676770;
+}
+
+/* -----------3 страница what we do--------------- */
+
+.services .card-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.services .card {
+  width: 45%;
+}
+
+.services .card img {
+  margin-bottom: 20px;
+}
+
+.services .card h4 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+}
+
+.services .link {
+  margin-top: 15px;
+}
+
+/* 4 страница --------------------- */
+
+.tabs__nav {
+  margin-bottom: 50px;
+}
+.tabs__nav button {
+  padding: 0 30px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #92a0ad;
+  border-radius: 4px;
+}
+
+.tabs__nav button + button {
+  margin-left: 15px;
+}
+
+.tabs__nav button.active {
+  background: #2e80b6;
+}
+
+.tabs__item img {
+  margin-bottom: 15px;
+}
+
+.tabs__item {
+  animation: fade 1s;
+}
+
+/* пишем данную структуру для того чтобы эта анимация 
+вверху имела четкие характеристики, и прописываем from - изначально что хотим
+to - к чему мы должны прийти, как в итоге должно выглядеть */
+@keyframes fade {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.tabs__item h4 {
+  margin-bottom: 15px;
+  font-size: 31px;
+  line-height: 36px;
+  color: #676770;
+}
+
+.tabs__desc {
+  max-width: 720px;
+  /* здесь так прописали чтоб текст был по центру а не смещено никуда */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ----------footer--------- */
+
+.footer__desc {
+  padding: 35px 0;
+}
+
+.footer__desc h4 {
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #676770;
+  margin-bottom: 25px;
+}
+
+.footer__desc-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px 40px;
+}
+
+.footer__desc-container > * {
+  width: 30%;
+  min-width: 230px;
+}
+
+.footer__desc a {
+  position: relative;
+  font-size: 13px;
+}
+
+.footer__desc li {
+  position: relative;
+  height: 30px;
+  font-size: 13px;
+  color: #668cad;
+}
+
+/* это мы создаем бефо или афтер псевдоэлемент и надпись контект обязательна, ведь в псевдоэлементе должен быть контект, и то что мы там напишем без разницы, эта фараз обязательна */
+.footer__desc li::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: #d5d5e0;
+}
+
+.footer__social li::before {
+  width: calc(100% - 25px);
+}
+
+.footer-desc li + li {
+  margin-top: 6px;
+}
+
+.footer__social img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+.footer__copy {
+  height: 100px;
+  background-color: #383838;
+  display: flex;
+  align-items: center;
+}
+
+.footer__copy p {
+  color: #9e9e9e;
+}
+
+@media (max-width: 829px) {
+  .footer__desc-container {
+    justify-content: space-evenly;
+  }
+
+  .footer-desc h4 {
+    margin-bottom: 15px;
+  }
+
+  .footer-desc {
+    padding-top: 0px;
+  }
+}
+
+@media (max-width: 660px) {
+  .tabs__nav {
+    margin-bottom: 30px;
+  }
+
+  .tabs__nav button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 30px;
+  }
+
+  .tabs__nav button + button {
+    margin-top: 15px;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .services .card-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .services .card {
+    width: 80%;
+  }
+
+  .title-wrapper {
+    margin-bottom: 40px;
+  }
+
+  .services .card h4 {
+    font-size: 16px;
+  }
+}
+
+/* здесь мы пишем запрос, который будет сделан если ширина будет меньше 400 пикселей, так бы под мобилки стилизуем */
+@media (max-width: 400px) {
+  .header__nav li + li {
+    /* в данном случае чтоб на минимальном экране мобилки 320 пикселей была видна адекватно менюшка, мы уменьшили отступ, который вступит в силу если экран меньше 400 пикселей */
+    margin-left: 15px;
+  }
+
+  .welcome__heading {
+    font-size: 40px;
+    margin-bottom: 50px;
+  }
+
+  .welcome__links a {
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .welcome__links > * + * {
+    margin-top: 20px;
+  }
+
+  body {
+    font-size: 12px;
+  }
+
+  .about .card h4 {
+    font-size: 16px;
+  }
+
+  .services .card .link {
+    font-size: 14px;
+  }
+
+  .tabs__item h4 {
+    font-size: 24px;
+  }
+}
